@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+    <div class="container">
+      <div class="d-flex  flex-wrap justify-content-around">
+
+      {% for post in posts %}
+      <div class="card m-2" style="width: 18rem;">
+        <img src={% if post.image %}{{ post.image.url }}{% else %}#{% endif %} style="height: 10rem;" class="card-img-top" alt="...">
+        <div class="card-body p-4">
+          <h5 class="card-title"> {{post.title | title}} </h5>
+          <p class="card-text post-content"> {{post.content}} </p>
+          <a href="{% url 'tag_detail' post.id %}" class="btn btn-warning">Detail</a>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+    </div>
+{% endblock container %}

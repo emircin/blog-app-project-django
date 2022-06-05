@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block container %}
+
+{% load crispy_forms_tags %}
+<div style="margin-top: 2rem;">
+<h2>Register Page</h2>
+
+{% if request.user.is_authenticated %}
+<h3>Thanks for registering</h3>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+<h3>Fill out the form please!</h3>
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form_user | crispy}}
+    {{ form_profile | crispy}}
+    <button type="submit" class="btn btn-warning">Register</button>
+</form>
+</div>
+</div>
+</div>  
+{% endif %}  
+{% endblock container %}
+    
